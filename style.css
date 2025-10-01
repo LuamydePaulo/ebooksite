@@ -1,0 +1,323 @@
+  :root {
+            --primary-color: #28a745;
+            --dark-background-start: #121212;
+            --dark-background-end: #1a1a1a;
+            --darker-background: #0d0d0d;
+            --light-text-color: #e0e0e0;
+            --lighter-text-color: #a0a0a0;
+            --white: #fff;
+            --shadow-color-light: rgba(255, 255, 255, 0.05);
+            --shadow-color-dark: rgba(0, 0, 0, 0.4);
+            --overlay-color: rgba(0, 0, 0, 0.6); /* Cor de sobreposição preta com 60% de opacidade */
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--light-text-color);
+            background: linear-gradient(to bottom, var(--dark-background-start), var(--dark-background-end));
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header com a imagem de fundo e overlay */
+        header {
+            /* Imagem de fundo do título */
+            background-image: url('https://i.imgur.com/b9L6e0t.jpeg'); /* <-- LINK DA SUA IMAGEM AQUI */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative; /* Necessário para posicionar o overlay */
+            overflow: hidden; /* Garante que o pseudo-elemento não vaze */
+            min-height: 400px; /* Garante que a imagem tenha espaço para aparecer */
+            display: flex; /* Para centralizar o conteúdo do header */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px var(--shadow-color-dark);
+            color: var(--white); /* Cor padrão para o texto dentro do header */
+        }
+
+        /* Camada de sobreposição (overlay) para o header */
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-color); /* Utiliza a variável para a cor de sobreposição */
+            z-index: 1; /* Coloca esta camada acima da imagem de fundo */
+        }
+
+        /* Garante que o conteúdo do header fique acima do overlay */
+        header .container > * { /* Aplica a todos os filhos diretos do container do header */
+            position: relative;
+            z-index: 2; /* Garante que o texto e outros elementos fiquem acima do overlay */
+        }
+
+        header .logo img {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            /*filter: invert(1) brightness(0.8); /* Ajuste conforme seu logo, pode ser removido */
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Adiciona uma sombra para destacar logos claros */
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            color: var(--white);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra mais forte para legibilidade em imagem */
+        }
+
+        header .subtitle {
+            font-size: 1.3em;
+            color: var(--light-text-color); /* Mais claro para contrastar com o overlay */
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header .hero-image img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px var(--shadow-color-dark);
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: transparent; /* Permite que o gradiente do body apareça */
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--darker-background);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        section h2 {
+            font-size: 2em;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 0 5px var(--shadow-color-light);
+        }
+
+        section h3 {
+            font-size: 1.5em;
+            color: var(--light-text-color);
+            margin-top: 30px;
+            line-height: 1.3;
+        }
+
+        section p {
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+            font-size: 1.1em;
+            color: var(--lighter-text-color);
+        }
+
+        section ul {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        section ul li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%2328a745"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat left 8px;
+            background-size: 18px;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: var(--light-text-color);
+        }
+
+        /* Sobre o Autor Original */
+        #sobre-o-autor-original .author-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        /* Depoimentos */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonial-item {
+            background-color: var(--darker-background);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--shadow-color-dark), inset 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+        }
+
+        .testimonial-item p {
+            font-style: italic;
+            margin-bottom: 15px;
+            max-width: none;
+            color: var(--lighter-text-color);
+        }
+
+        .testimonial-item .author-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-item .author-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            border: 2px solid var(--dark-background-end);
+        }
+
+        .testimonial-item .author-info strong {
+            font-size: 1em;
+            color: var(--light-text-color);
+        }
+
+        /* Oferta */
+        #oferta .ebook-cover-offer img {
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset;
+        }
+
+        #oferta .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+        }
+        #oferta .price span {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: var(--lighter-text-color);
+            text-decoration: line-through;
+        }
+        #oferta ul li {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%2328a745"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>');
+        }
+        #oferta .guarantee {
+            font-size: 0.9em;
+            color: var(--lighter-text-color);
+            margin-top: 30px;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--darker-background);
+            color: var(--lighter-text-color);
+            padding: 40px 20px;
+            font-size: 0.9em;
+            text-align: center;
+            box-shadow: inset 0 5px 15px var(--shadow-color-dark);
+        }
+
+        footer ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        footer ul li {
+            margin: 0 15px;
+            padding-left: 0;
+            color: var(--lighter-text-color);
+        }
+
+        footer ul li a {
+            color: var(--lighter-text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Acessibilidade: Garante que os botões e links sejam discerníveis no foco */
+        .cta-button:focus,
+        footer ul li a:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 3px;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header .subtitle {
+                font-size: 1.1em;
+            }
+            section h2 {
+                font-size: 1.7em;
+            }
+            section p, section ul li {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            footer ul li {
+                margin: 5px 10px;
+            }
+        }
