@@ -1,14 +1,14 @@
-  :root {
-            --primary-color: #28a745;
-            --dark-background-start: #121212;
-            --dark-background-end: #1a1a1a;
-            --darker-background: #0d0d0d;
-            --light-text-color: #e0e0e0;
-            --lighter-text-color: #a0a0a0;
+  /* CSS Básico para Estrutura e Legibilidade - Personalize à vontade */
+        :root {
+            --primary-color: #28a745; /* Um tom de verde mais fechado para os botões e destaques */
+            --dark-background-start: #121212; /* Cor mais escura para o início do gradiente */
+            --dark-background-end: #1a1a1a;   /* Cor ligeiramente mais clara para o fim do gradiente */
+            --darker-background: #0d0d0d; /* Fundo mais escuro para alternar seções */
+            --light-text-color: #e0e0e0; /* Texto principal claro */
+            --lighter-text-color: #a0a0a0; /* Texto secundário/leve */
             --white: #fff;
-            --shadow-color-light: rgba(255, 255, 255, 0.05);
-            --shadow-color-dark: rgba(0, 0, 0, 0.4);
-            --overlay-color: rgba(0, 0, 0, 0.6); /* Cor de sobreposição preta com 60% de opacidade */
+            --shadow-color-light: rgba(255, 255, 255, 0.05); /* Sombra para simular luz */
+            --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Sombra para simular profundidade */
         }
 
         body {
@@ -16,10 +16,11 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            color: var(--light-text-color);
+            color: var(--light-text-color); /* Texto principal claro */
+            /* Gradiente de fundo */
             background: linear-gradient(to bottom, var(--dark-background-start), var(--dark-background-end));
-            background-attachment: fixed;
-            min-height: 100vh;
+            background-attachment: fixed; /* Fixa o gradiente para rolar o conteúdo por cima */
+            min-height: 100vh; /* Garante que o gradiente cubra toda a altura da viewport */
         }
 
         .container {
@@ -28,65 +29,33 @@
             padding: 20px;
         }
 
-        /* Header com a imagem de fundo e overlay */
+        /* Header */
         header {
-            /* Imagem de fundo do título */
-            background-image: url('https://i.imgur.com/b9L6e0t.jpeg'); /* <-- LINK DA SUA IMAGEM AQUI */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: var(--dark-background-end); /* Usando a cor final do gradiente para o header */
             padding: 40px 20px;
             text-align: center;
-            position: relative; /* Necessário para posicionar o overlay */
-            overflow: hidden; /* Garante que o pseudo-elemento não vaze */
-            min-height: 400px; /* Garante que a imagem tenha espaço para aparecer */
-            display: flex; /* Para centralizar o conteúdo do header */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 15px var(--shadow-color-dark);
-            color: var(--white); /* Cor padrão para o texto dentro do header */
-        }
-
-        /* Camada de sobreposição (overlay) para o header */
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--overlay-color); /* Utiliza a variável para a cor de sobreposição */
-            z-index: 1; /* Coloca esta camada acima da imagem de fundo */
-        }
-
-        /* Garante que o conteúdo do header fique acima do overlay */
-        header .container > * { /* Aplica a todos os filhos diretos do container do header */
-            position: relative;
-            z-index: 2; /* Garante que o texto e outros elementos fiquem acima do overlay */
+            box-shadow: 0 5px 15px var(--shadow-color-dark); /* Sombra para profundidade */
         }
 
         header .logo img {
             max-width: 150px;
             height: auto;
             margin-bottom: 20px;
-            /*filter: invert(1) brightness(0.8); /* Ajuste conforme seu logo, pode ser removido */
-            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Adiciona uma sombra para destacar logos claros */
+            filter: invert(1) brightness(0.8); /* Inverte cores para logos escuros em fundo escuro, ajuste conforme seu logo */
         }
 
         header h1 {
             font-size: 2.8em;
-            color: var(--white);
+            color: var(--white); /* Título em branco */
             margin-bottom: 10px;
             line-height: 1.1;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra mais forte para legibilidade em imagem */
+            text-shadow: 0 0 10px var(--shadow-color-light); /* Leve brilho */
         }
 
         header .subtitle {
             font-size: 1.3em;
-            color: var(--light-text-color); /* Mais claro para contrastar com o overlay */
+            color: var(--lighter-text-color); /* Subtítulo em cinza mais claro */
             margin-bottom: 30px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
         }
 
         header .hero-image img {
@@ -94,7 +63,7 @@
             height: auto;
             margin: 30px 0;
             border-radius: 8px;
-            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset;
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset; /* Profundidade e leve luz interna */
         }
 
         .cta-button {
@@ -110,30 +79,31 @@
             margin-top: 20px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px var(--shadow-color-dark);
+            box-shadow: 0 5px 15px var(--shadow-color-dark); /* Sombra para destacar o botão */
         }
 
         .cta-button:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 15px rgba(255, 255, 255, 0.1);
+            background-color: #218838; /* Tom mais escuro do verde */
+            transform: translateY(-2px); /* Efeito de elevação */
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 15px rgba(255, 255, 255, 0.1); /* Sombra e brilho maiores */
         }
 
         /* Sections */
         section {
             padding: 60px 20px;
             text-align: center;
-            background-color: transparent; /* Permite que o gradiente do body apareça */
+            /* Usamos transparent para deixar o gradiente do body aparecer */
+            background-color: transparent;
         }
 
         section:nth-of-type(even) {
-            background-color: var(--darker-background);
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: var(--darker-background); /* Fundo um pouco mais escuro para seções alternadas */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* Leve sombra interna para profundidade */
         }
 
         section h2 {
             font-size: 2em;
-            color: var(--white);
+            color: var(--white); /* Títulos em branco */
             margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 0 0 5px var(--shadow-color-light);
@@ -141,7 +111,7 @@
 
         section h3 {
             font-size: 1.5em;
-            color: var(--light-text-color);
+            color: var(--light-text-color); /* Subtítulos em cinza claro */
             margin-top: 30px;
             line-height: 1.3;
         }
@@ -150,7 +120,7 @@
             max-width: 700px;
             margin: 0 auto 20px auto;
             font-size: 1.1em;
-            color: var(--lighter-text-color);
+            color: var(--lighter-text-color); /* Parágrafos em cinza mais claro */
         }
 
         section ul {
@@ -162,12 +132,12 @@
         }
 
         section ul li {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%2328a745"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat left 8px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%2328a745"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') no-repeat left 8px; /* Mantém o check verde */
             background-size: 18px;
             padding-left: 30px;
             margin-bottom: 10px;
             font-size: 1.1em;
-            color: var(--light-text-color);
+            color: var(--light-text-color); /* Itens da lista em cinza claro */
         }
 
         /* Sobre o Autor Original */
@@ -178,7 +148,7 @@
             object-fit: cover;
             margin: 0 auto 20px auto;
             border: 4px solid var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1) inset;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.1) inset; /* Sombra e leve brilho interno */
         }
 
         /* Depoimentos */
@@ -193,10 +163,10 @@
         }
 
         .testimonial-item {
-            background-color: var(--darker-background);
+            background-color: var(--darker-background); /* Fundo do depoimento ligeiramente mais escuro */
             border-radius: 8px;
             padding: 30px;
-            box-shadow: 0 5px 15px var(--shadow-color-dark), inset 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px var(--shadow-color-dark), inset 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra para fora e interna para profundidade */
             text-align: left;
         }
 
@@ -204,7 +174,7 @@
             font-style: italic;
             margin-bottom: 15px;
             max-width: none;
-            color: var(--lighter-text-color);
+            color: var(--lighter-text-color); /* Texto do depoimento em cinza mais claro */
         }
 
         .testimonial-item .author-info {
@@ -218,12 +188,12 @@
             border-radius: 50%;
             margin-right: 15px;
             object-fit: cover;
-            border: 2px solid var(--dark-background-end);
+            border: 2px solid var(--primary-color);
         }
 
         .testimonial-item .author-info strong {
             font-size: 1em;
-            color: var(--light-text-color);
+            color: var(--light-text-color); /* Nome do autor do depoimento */
         }
 
         /* Oferta */
@@ -232,20 +202,20 @@
             height: auto;
             margin: 0 auto 30px auto;
             border-radius: 8px;
-            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset;
+            box-shadow: 0 8px 20px var(--shadow-color-dark), 0 0 30px rgba(255, 255, 255, 0.08) inset; /* Profundidade e leve luz interna */
         }
 
         #oferta .price {
             font-size: 2.5em;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--primary-color); /* Preço em verde */
             margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5); /* Leve brilho no preço */
         }
         #oferta .price span {
             font-size: 0.6em;
             font-weight: normal;
-            color: var(--lighter-text-color);
+            color: var(--lighter-text-color); /* Texto "De R\$ XX,XX por" */
             text-decoration: line-through;
         }
         #oferta ul li {
@@ -260,12 +230,12 @@
 
         /* Footer */
         footer {
-            background-color: var(--darker-background);
+            background-color: var(--darker-background); /* Fundo do footer mais escuro */
             color: var(--lighter-text-color);
             padding: 40px 20px;
             font-size: 0.9em;
             text-align: center;
-            box-shadow: inset 0 5px 15px var(--shadow-color-dark);
+            box-shadow: inset 0 5px 15px var(--shadow-color-dark); /* Sombra interna para profundidade */
         }
 
         footer ul {
@@ -279,11 +249,11 @@
         footer ul li {
             margin: 0 15px;
             padding-left: 0;
-            color: var(--lighter-text-color);
+            color: var(--lighter-text-color); /* Texto do footer */
         }
 
         footer ul li a {
-            color: var(--lighter-text-color);
+            color: var(--lighter-text-color); /* Links do footer */
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -295,7 +265,7 @@
         /* Acessibilidade: Garante que os botões e links sejam discerníveis no foco */
         .cta-button:focus,
         footer ul li a:focus {
-            outline: 2px solid var(--primary-color);
+            outline: 2px solid var(--primary-color); /* Muda a cor do outline para o verde primário */
             outline-offset: 3px;
         }
 
